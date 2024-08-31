@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import sytles from './Parent.module.css';
 
 // Parent Component
@@ -26,8 +26,8 @@ const Parent = () => {
     );
 };
 
-// Child Component
-const ChildComponent: React.FunctionComponent<any> = ({ text }) => {
+// Child Component (memoized)
+const ChildComponent: React.FunctionComponent<any> = memo(({ text }) => {
     console.log('Child component re-rendered');
 
     return (
@@ -36,6 +36,6 @@ const ChildComponent: React.FunctionComponent<any> = ({ text }) => {
             <p>Text from Parent: {text}</p>
         </>
     );
-};
+});
 
 export default Parent;
